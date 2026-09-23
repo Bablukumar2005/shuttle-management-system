@@ -1,0 +1,18 @@
+# Maven / Java Build Outputs
+target/
+*.jar
+*.war
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+
+# Logs & Temporary Files
+*.log
+scratch_*.txt
+
+# IDE & OS Files
+.DS_Store
+.idea/
+.vscode/

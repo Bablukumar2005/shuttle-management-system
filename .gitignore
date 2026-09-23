@@ -1,0 +1,25 @@
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+
+# Node / Dependencies
+node_modules/
+
+# Maven / Java Build Outputs
+target/
+*.jar
+*.war
+
+# Frontend Build Outputs
+dist/
+dist-ssr/
+
+# Logs & Temporary Scratch Files
+*.log
+scratch_*.txt
+
+# IDE & OS Files
+.DS_Store
+.idea/
+.vscode/
