@@ -150,12 +150,12 @@ export default function AdminDriversPage() {
   return (
     <div>
       {/* Header Bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+      <div className="page-header">
         <div>
           <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#0f172a' }}>Driver Management</h1>
           <p style={{ fontSize: '0.875rem', color: '#64748b' }}>Driver Availability & Hourly Shift Timeline</p>
         </div>
-        <div style={{ display: 'flex', gap: '12px' }}>
+        <div className="header-actions">
           <button
             onClick={fetchData}
             style={{
@@ -203,7 +203,7 @@ export default function AdminDriversPage() {
       </div>
 
       {/* Control Bar & Legend */}
-      <div className="card" style={{ padding: '16px', marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+      <div className="card control-bar" style={{ padding: '16px', marginBottom: '20px' }}>
         {/* Search & Date Filter */}
         <div style={{ display: 'flex', gap: '12px', flex: '1', minWidth: '260px' }}>
           <div style={{ position: 'relative', flex: '1' }}>

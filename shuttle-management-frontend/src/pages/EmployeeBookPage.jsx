@@ -147,7 +147,7 @@ export default function EmployeeBookPage() {
   return (
     <div style={{ maxWidth: '960px', margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="page-header">
         <div>
           <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#0f172a' }}>Book a Shuttle Ride</h1>
           <p style={{ fontSize: '0.875rem', color: '#64748b' }}>Request shuttle transportation across campus locations</p>
@@ -176,7 +176,7 @@ export default function EmployeeBookPage() {
         </button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+      <div className="responsive-grid-2col">
         {/* Left Column: Booking Form */}
         <div>
           <div className="card" style={{ padding: '24px' }}>

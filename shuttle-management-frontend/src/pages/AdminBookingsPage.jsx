@@ -89,7 +89,7 @@ export default function AdminBookingsPage() {
   return (
     <div>
       {/* Page Title & Subtitle */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+      <div className="page-header">
         <div>
           <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#0f172a' }}>Booking Management</h1>
           <p style={{ fontSize: '0.875rem', color: '#64748b' }}>Monitor, track, and inspect passenger shuttle requests</p>
@@ -116,9 +116,9 @@ export default function AdminBookingsPage() {
       </div>
 
       {/* Control Bar: Search input & Date Selector */}
-      <div className="card" style={{ padding: '16px', marginBottom: '20px', display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
+      <div className="card control-bar" style={{ padding: '16px', marginBottom: '20px' }}>
         {/* Search Input */}
-        <div style={{ position: 'relative', flex: '1', minWidth: '240px' }}>
+        <div style={{ position: 'relative', flex: '1', minWidth: '200px' }}>
           <Search size={18} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} />
           <input
             type="text"
@@ -169,7 +169,7 @@ export default function AdminBookingsPage() {
       )}
 
       {/* Main Table Content Container */}
-      <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
+      <div className="card table-responsive" style={{ padding: '0' }}>
         {loading ? (
           <LoadingSpinner message="Fetching live booking records from Spring Boot backend..." />
         ) : filteredBookings.length === 0 ? (

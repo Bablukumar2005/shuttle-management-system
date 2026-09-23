@@ -109,12 +109,12 @@ export default function AdminRoutesPage() {
   return (
     <div>
       {/* Page Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+      <div className="page-header">
         <div>
           <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#0f172a' }}>Route Management</h1>
           <p style={{ fontSize: '0.875rem', color: '#64748b' }}>Configure campus pickup and drop-off shuttle routes</p>
         </div>
-        <div style={{ display: 'flex', gap: '12px' }}>
+        <div className="header-actions">
           <button
             onClick={fetchRoutes}
             style={{
@@ -177,7 +177,7 @@ export default function AdminRoutesPage() {
       )}
 
       {/* Route List Card */}
-      <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
+      <div className="card table-responsive" style={{ padding: '0' }}>
         {loading ? (
           <LoadingSpinner message="Fetching campus route configurations..." />
         ) : routes.length === 0 ? (

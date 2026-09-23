@@ -63,7 +63,7 @@ export default function LoginPage() {
         padding: '20px',
       }}
     >
-      <div className="card" style={{ maxWidth: '440px', width: '100%', padding: '36px' }}>
+      <div className="card login-card">
         {/* Logo & Header */}
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <div
@@ -184,7 +184,7 @@ export default function LoginPage() {
           <p style={{ fontSize: '0.75rem', fontWeight: '700', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px', textAlign: 'center' }}>
             Demo Quick Credentials
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+          <div className="demo-btns-grid">
             <button
               type="button"
               onClick={() => handleQuickLogin('admin@example.com', 'admin123')}

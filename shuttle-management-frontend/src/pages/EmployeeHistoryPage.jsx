@@ -89,7 +89,7 @@ export default function EmployeeHistoryPage() {
   return (
     <div>
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+      <div className="page-header">
         <div>
           <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#0f172a' }}>My Trip History</h1>
           <p style={{ fontSize: '0.875rem', color: '#64748b' }}>View your past shuttle requests, active rides, and status details</p>
@@ -116,8 +116,8 @@ export default function EmployeeHistoryPage() {
       </div>
 
       {/* Search & Filter Bar */}
-      <div className="card" style={{ padding: '16px', marginBottom: '20px', display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ position: 'relative', flex: '1', minWidth: '240px' }}>
+      <div className="card control-bar" style={{ padding: '16px', marginBottom: '20px' }}>
+        <div style={{ position: 'relative', flex: '1', minWidth: '200px' }}>
           <Search size={18} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} />
           <input
             type="text"
@@ -185,7 +185,7 @@ export default function EmployeeHistoryPage() {
       )}
 
       {/* History Table Container */}
-      <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
+      <div className="card table-responsive" style={{ padding: '0' }}>
         {loading ? (
           <LoadingSpinner message="Fetching your shuttle trip history..." />
         ) : filteredBookings.length === 0 ? (

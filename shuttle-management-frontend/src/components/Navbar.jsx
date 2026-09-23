@@ -1,8 +1,8 @@
 import React from 'react';
-import { Bus, UserCircle, LogOut } from 'lucide-react';
+import { Bus, UserCircle, LogOut, Menu } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Navbar() {
+export default function Navbar({ onToggleMobileSidebar }) {
   const navigate = useNavigate();
 
   // Retrieve user session from localStorage
@@ -15,43 +15,35 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      style={{
-        position: 'fixed',
-        top: 0,
-        right: 0,
-        left: '240px',
-        height: '60px',
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid #e2e8f0',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 24px',
-        zIndex: 100,
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <header className="app-header">
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <button
+          className="mobile-menu-btn"
+          onClick={onToggleMobileSidebar}
+          aria-label="Toggle navigation menu"
+        >
+          <Menu size={24} />
+        </button>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#2563eb', fontWeight: '700', fontSize: '1.1rem' }}>
           <Bus size={24} />
           <span>MoveInSync</span>
         </div>
-        <span style={{ color: '#cbd5e1' }}>|</span>
-        <span style={{ fontSize: '0.875rem', fontWeight: '500', color: '#64748b' }}>Campus Transit Portal</span>
+        <span className="header-portal-title" style={{ color: '#cbd5e1' }}>|</span>
+        <span className="header-portal-title" style={{ fontSize: '0.875rem', fontWeight: '500', color: '#64748b' }}>Campus Transit Portal</span>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         {user ? (
           <>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <UserCircle size={28} color="#2563eb" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <UserCircle size={26} color="#2563eb" />
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#0f172a' }}>
+                <span style={{ fontSize: '0.8125rem', fontWeight: '600', color: '#0f172a' }}>
                   {user.name || 'Campus User'}
                 </span>
                 <span
                   style={{
-                    fontSize: '0.7rem',
+                    fontSize: '0.65rem',
                     fontWeight: '700',
                     color: user.role === 'ADMIN' ? '#1e40af' : '#15803d',
                     textTransform: 'uppercase',
@@ -67,9 +59,9 @@ export default function Navbar() {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '4px',
                 fontSize: '0.8125rem',
-                padding: '6px 12px',
+                padding: '6px 10px',
                 borderRadius: '6px',
                 backgroundColor: '#fff1f2',
                 color: '#be123c',
@@ -79,7 +71,7 @@ export default function Navbar() {
               }}
             >
               <LogOut size={14} />
-              <span>Logout</span>
+              <span className="header-portal-title">Logout</span>
             </button>
           </>
         ) : (

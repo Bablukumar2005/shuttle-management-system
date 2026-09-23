@@ -12,6 +12,48 @@
   --header-height: 60px;
 }
 
+.app-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: var(--sidebar-width);
+  height: var(--header-height);
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 100;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #334155;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background-color: #ffffff;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  z-index: 101;
+  transition: transform 0.25s ease;
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -70,3 +112,152 @@ button {
   margin-bottom: 12px;
   color: var(--text-main);
 }
+
+/* Responsive Grid & Layout Helper Classes */
+.responsive-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile Responsive Breakpoints */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+
+  .app-sidebar {
+    width: 250px !important;
+    transform: translateX(-100%);
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+    z-index: 201 !important;
+  }
+
+  .app-sidebar.mobile-open {
+    transform: translateX(0) !important;
+  }
+
+  .sidebar-backdrop.mobile-open {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.4);
+    z-index: 200 !important;
+  }
+
+  .main-wrapper {
+    margin-left: 0 !important;
+  }
+
+  .content-area {
+    padding: 16px 12px !important;
+  }
+
+  .card {
+    padding: 16px !important;
+    border-radius: 8px !important;
+  }
+
+  .responsive-grid-2col {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .page-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    margin-bottom: 16px !important;
+    gap: 12px !important;
+  }
+
+  .header-actions {
+    width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+
+  .header-actions button {
+    flex: 1 !important;
+    justify-content: center !important;
+  }
+
+  .control-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .control-bar > div {
+    width: 100% !important;
+  }
+}
+
+.login-card {
+  max-width: 440px;
+  width: 100%;
+  padding: 36px;
+}
+
+.demo-btns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.booking-drawer-content {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+@media (max-width: 480px) {
+  .content-area {
+    padding: 12px 8px !important;
+  }
+
+  .card {
+    padding: 12px !important;
+  }
+
+  .login-card {
+    padding: 20px 16px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .demo-btns-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+

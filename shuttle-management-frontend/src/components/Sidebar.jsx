@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, CalendarCheck, Users, MapPin, PlusCircle, History } from 'lucide-react';
+import { LayoutDashboard, CalendarCheck, Users, MapPin, PlusCircle, History, X } from 'lucide-react';
 
-export default function Sidebar() {
+export default function Sidebar({ isMobileOpen, onCloseMobile }) {
   const savedUser = localStorage.getItem('user');
   const user = savedUser ? JSON.parse(savedUser) : null;
   const role = user?.role || 'ADMIN'; // Default to ADMIN if unauthenticated
@@ -30,63 +30,65 @@ export default function Sidebar() {
   });
 
   return (
-    <aside
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        width: '240px',
-        backgroundColor: '#ffffff',
-        borderRight: '1px solid #e2e8f0',
-        display: 'flex',
-        flexDirection: 'column',
-        zIndex: 101,
-      }}
-    >
-      <div style={{ height: '60px', display: 'flex', alignItems: 'center', padding: '0 20px', borderBottom: '1px solid #e2e8f0' }}>
-        <h2 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#0f172a' }}>Shuttle Portal</h2>
-      </div>
+    <>
+      {/* Mobile Backdrop Overlay */}
+      <div
+        className={`sidebar-backdrop ${isMobileOpen ? 'mobile-open' : ''}`}
+        onClick={onCloseMobile}
+      />
 
-      <div style={{ flex: 1, overflowY: 'auto', padding: '8px 0' }}>
-        {/* Admin Navigation Section */}
-        {role === 'ADMIN' && (
-          <>
-            <div style={navSectionStyle}>Admin Workspace</div>
-            <NavLink to="/admin/dashboard" style={navItemStyle}>
-              <LayoutDashboard size={18} />
-              <span>Dashboard</span>
-            </NavLink>
-            <NavLink to="/admin/bookings" style={navItemStyle}>
-              <CalendarCheck size={18} />
-              <span>Bookings</span>
-            </NavLink>
-            <NavLink to="/admin/drivers" style={navItemStyle}>
-              <Users size={18} />
-              <span>Drivers & Timeline</span>
-            </NavLink>
-            <NavLink to="/admin/routes" style={navItemStyle}>
-              <MapPin size={18} />
-              <span>Routes</span>
-            </NavLink>
-          </>
-        )}
+      <aside className={`app-sidebar ${isMobileOpen ? 'mobile-open' : ''}`}>
+        <div style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', borderBottom: '1px solid #e2e8f0' }}>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#0f172a' }}>Shuttle Portal</h2>
+          <button
+            onClick={onCloseMobile}
+            className="mobile-menu-btn"
+            aria-label="Close sidebar menu"
+          >
+            <X size={20} />
+          </button>
+        </div>
 
-        {/* Employee Navigation Section */}
-        {(role === 'EMPLOYEE' || role === 'ADMIN') && (
-          <>
-            <div style={navSectionStyle}>Employee Workspace</div>
-            <NavLink to="/employee/book" style={navItemStyle}>
-              <PlusCircle size={18} />
-              <span>Book Shuttle</span>
-            </NavLink>
-            <NavLink to="/employee/history" style={navItemStyle}>
-              <History size={18} />
-              <span>Trip History</span>
-            </NavLink>
-          </>
-        )}
-      </div>
-    </aside>
+        <div style={{ flex: 1, overflowY: 'auto', padding: '8px 0' }}>
+          {/* Admin Navigation Section */}
+          {role === 'ADMIN' && (
+            <>
+              <div style={navSectionStyle}>Admin Workspace</div>
+              <NavLink to="/admin/dashboard" style={navItemStyle} onClick={onCloseMobile}>
+                <LayoutDashboard size={18} />
+                <span>Dashboard</span>
+              </NavLink>
+              <NavLink to="/admin/bookings" style={navItemStyle} onClick={onCloseMobile}>
+                <CalendarCheck size={18} />
+                <span>Bookings</span>
+              </NavLink>
+              <NavLink to="/admin/drivers" style={navItemStyle} onClick={onCloseMobile}>
+                <Users size={18} />
+                <span>Drivers & Timeline</span>
+              </NavLink>
+              <NavLink to="/admin/routes" style={navItemStyle} onClick={onCloseMobile}>
+                <MapPin size={18} />
+                <span>Routes</span>
+              </NavLink>
+            </>
+          )}
+
+          {/* Employee Navigation Section */}
+          {(role === 'EMPLOYEE' || role === 'ADMIN') && (
+            <>
+              <div style={navSectionStyle}>Employee Workspace</div>
+              <NavLink to="/employee/book" style={navItemStyle} onClick={onCloseMobile}>
+                <PlusCircle size={18} />
+                <span>Book Shuttle</span>
+              </NavLink>
+              <NavLink to="/employee/history" style={navItemStyle} onClick={onCloseMobile}>
+                <History size={18} />
+                <span>Trip History</span>
+              </NavLink>
+            </>
+          )}
+        </div>
+      </aside>
+    </>
   );
 }

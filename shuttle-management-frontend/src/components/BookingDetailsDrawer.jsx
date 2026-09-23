@@ -172,16 +172,7 @@ export default function BookingDetailsDrawer({ isOpen, onClose, booking, onBooki
       onClick={onClose}
     >
       <div
-        style={{
-          width: '100%',
-          maxWidth: '480px',
-          height: '100%',
-          backgroundColor: '#ffffff',
-          boxShadow: '-4px 0 20px rgba(0,0,0,0.1)',
-          display: 'flex',
-          flexDirection: 'column',
-          overflowY: 'auto',
-        }}
+        className="booking-drawer-content"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drawer Header */}

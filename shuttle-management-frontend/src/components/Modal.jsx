@@ -58,7 +58,7 @@ export default function Modal({ isOpen, onClose, title, children }) {
             <X size={20} />
           </button>
         </div>
-        <div style={{ padding: '20px' }}>{children}</div>
+        <div style={{ padding: '20px', maxHeight: 'calc(90vh - 60px)', overflowY: 'auto' }}>{children}</div>
       </div>
     </div>
   );
